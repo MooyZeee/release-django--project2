@@ -1,0 +1,26 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    {% for post in posts %}
+        <div class="post-draft">
+            {% if post.photo %}
+            <span><img class="block images" src="{{ post.photo.url }}" width="534" height="253"></span>
+            {% endif %}
+            <span class="block names-post"><a class="block decoration-names-post" href="{% url 'post_info' pk=post.pk %}">{{ post.title }}</a></span>
+            <div class="block description-draft">
+                <p class="block description-post">{{ post.text|truncatechars:250 }}</p>
+            </div>
+            <p class="block publish-date-draft">Пост создан: {{ post.created_date|date:'d-m-Y' }}</p>
+
+            {% if post.published_date %}
+                <div class="date">
+                    {{ post.published_date }}
+                </div>
+            {% else %}
+                <a class="btn btn-default" href="{% url 'post_publish' pk=post.pk %}"><button class="btn click-btn-default">Опубликовать</button></a>
+                <span>|</span>
+                <a class="btn btn-default2" href="{% url 'post_del' pk=post.pk %}"><button class="btn click-btn-default2">Удалить запись</button></a>
+            {% endif %}
+        </div>
+    {% endfor %}
+{% endblock %}

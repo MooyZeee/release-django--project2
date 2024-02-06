@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <title>L-Avito | Все объявления на ваш вкус и цвет. Только на L-Avito.</title>
+        <link rel="shortcut icon" href="{% static 'blog/images/logo.png' %}" type="image/a-icon" />
+        <link rel="stylesheet" href="{% static 'blog/css/blog.css' %}">
+    </head>
+    <body>
+        <form>
+            <div class="page-header">
+                <span class="block1 text-work"><a class="work-decoration" href="/">Работа</a></span>
+                <span class="block1 text-estate"><a class="estate-decoration" href="{% url 'work_post' %}">Недвижемость</a></span>
+                <span class="block1 text-avito"><a class="avito-decoration" href="/">Avito</a></span>
+                <span class="block1 text-electronics"><a class="electronics-decoration" href="/">Электроника</a></span>
+                <span class="block1 text-draft"><a class="draft-decoration" href="{% url 'post_draft' %}">Черновик</a></span>
+                <input class="block1 text-2" placeholder="Поиск по объявлениям" type="text">
+                <button class="block1 button-type--submit" type="submit"></button>
+            </div>
+
+            <div class="content container">
+                <div class="row">
+                    <div class="col-md-8">
+                            {% block content %}
+                            {% endblock %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>
+</html>

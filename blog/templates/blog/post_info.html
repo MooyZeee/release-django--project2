@@ -1,0 +1,72 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="post-info">
+    {% if post.photo %}
+        <span class="block names-post-info"><a class="block decoration-names-post" href="{% url 'post_info' pk=post.pk %}">{{ post.title }}</a></span>
+        <p class="block summa-post-info">249 999 ₽</p>
+        <p class="block add-to-favorites">Добавить в избранное</p>
+        <p class="www"><img class="block photo-url" src="{{ post.photo.url }}" width="534" height="364"></p>
+        <a class="btn btn-default-info-number" href="#">Показать телефон</a>
+        <a class="btn btn-default-info-write" href="#">НАПИСАТЬ</a>
+        <p class="www3">г. Аргун, Чеченская республика </p>
+        <p class="date-publish2">{{ post.published_date }}</p>
+
+            <span class="form-text-info">Марка: <span>None</span></span>
+            <span class="form-text-info2">Модель: <span>None</span></span>
+            <span class="form-text-info3">Страна происхождения бренда: <span>None</span></span>
+            <span class="form-text-info4">Год выпуска: <span>None</span></span>
+            <span class="form-text-info5">Пробег: <span>None</span></span>
+            <span class="form-text-info6">Тип: <span>None</span></span>
+            <span class="form-text-info7">Тип двигателя: <span>None</span></span>
+            <span class="form-text-info8">Мощность: <span>None</span></span>
+            <span class="form-text-info9">Объём двигателя: <span>None</span></span>
+            <span class="form-text-info10">Подача топлива: <span>None</span></span>
+            <span class="form-text-info11">Тип привода: <span>None</span></span>
+
+
+            <span class="form-text-info-2">Число тактов: <span>None</span></span>
+            <span class="form-text-info2-2">Количество цилиндров: <span>None</span></span> <br>
+            <span class="form-text-info3-2">Коробка передач: <span>None</span></span>
+            <span class="form-text-info4-2">Количество передач: <span>None</span></span>
+            <span class="form-text-info5-2">Расположение цилиндров: <span>None</span></span>
+            <span class="form-text-info6-2">Охлаждение: <span>None</span></span>
+            <span class="form-text-info7-2">Состояние: <span>None</span></span>
+            <span class="form-text-info8-2">VIN или номер рамы: <span>None</span></span>
+            <span class="form-text-info9-2">Доступность: <span>None</span></span>
+            <span class="form-text-info10-2">Дополнительные опции: <span>None</span></span>
+
+
+
+
+        <br>
+        <br>
+        <hr>
+        <p class="www2">г. Аргун, Чеченская республика </p>
+        <div class="date-publish">
+            Дата публикации: {{ post.published_date }}
+        </div>
+        <br>
+        <hr>
+        <div class="block description-draft-info">
+            <p class="block description-post-info">{{ post.text }}</p>
+        </div>
+    {% endif %}
+
+<!--    {% if not post.published_date %}-->
+<!--        <a class="btn btn-default2" href="{% url 'post_del' pk=post.pk %}"><button class="btn click-btn-default-info">Удалить запись</button></a>-->
+<!--        <a class="btn btn-default-refactor" href="#">Редактировать запись</a>-->
+<!--        <a class="btn btn-default-info" href="{% url 'post_publish' pk=post.pk %}">Опубликовать</a>-->
+<!--    {% endif %}-->
+
+    {% if post.published_date %}
+        <a class="btn btn-default2" href="{% url 'post_del' pk=post.pk %}"><button class="btn click-btn-default-info">Удалить запись</button></a>
+        <a class="btn btn-default-refactor" href="{% url 'post_edit' pk=post.pk %}">Редактировать запись</a>
+    {% elif not post.published_date %}
+        <a class="btn btn-default2" href="{% url 'post_del' pk=post.pk %}"><button class="btn click-btn-default-info">Удалить запись</button></a>
+        <a class="btn btn-default-refactor" href="{% url 'post_edit' pk=post.pk %}">Редактировать запись</a>
+        <a class="btn btn-default-info" href="{% url 'post_publish' pk=post.pk %}">Опубликовать</a>
+    {% endif %}
+
+</div>
+{% endblock %}

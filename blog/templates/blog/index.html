@@ -1,0 +1,19 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
+            {% if post.photo %}
+            <span><img class="block images" src="{{ post.photo.url }}" width="534" height="253"></span>
+            {% endif %}
+            <span class="block names-post"><a class="block decoration-names-post" href="{% url 'post_info' pk=post.pk %}">{{ post.title }}</a></span>
+            <p class="block summa-post">249 999 ₽</p>
+
+            <div class="block description">
+                <p class="block description-post">{{ post.text|linebreaksbr|truncatewords:90 }}</p>
+            </div>
+
+            <p class="block publish-date">Дата публикации: {{ post.published_date }}</p>
+            <p class="block rg-publish">г. Урус-Мартан, Чеченская Республика</p>
+        </div>
+    {% endfor %}
+{% endblock %}
